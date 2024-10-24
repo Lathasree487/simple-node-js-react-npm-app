@@ -1,5 +1,5 @@
 # Use Node.js LTS version as the base image
-FROM node:lts-buster-slim
+FROM node:18-alpine
 
 # Set the working directory inside the container to /opt
 WORKDIR /opt
