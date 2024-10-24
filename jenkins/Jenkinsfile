@@ -41,7 +41,7 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 script {
-                    sh 'aws eks update-kubeconfig --name=Terraform-Cluster --region=us-east-1'
+                    sh 'aws eks update-kubeconfig --name=Terraform-pipeline-EKS --region=us-east-1'
                     sh 'kubectl apply -f k8s_manifest/namespace.yaml'
                     sh 'kubectl apply -f k8s_manifest/deployment.yaml'
                     sh 'kubectl apply -f k8s_manifest/service.yaml'
