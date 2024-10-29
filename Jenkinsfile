@@ -70,6 +70,7 @@ pipeline {
     environment {
         IMAGE_NAME = "chillakurulathasree/trivy"
         // IMAGE_TAG = "latest"
+        DOCKER_CREDENTIALS_ID = 'docker-cred'
     }
 
     stages {
@@ -105,7 +106,7 @@ pipeline {
             stage('Publish to DockerHub') {
             steps {
                  script {
-                    docker.withRegistry('', docker-cred) {
+                    docker.withRegistry('', DOCKER_CREDENTIALS_ID) {
                         docker.image("${IMAGE_NAME}:${env.BUILD_ID}").push()
                         // docker.image("${DOCKER_IMAGE}:${env.BUILD_ID}").push('latest')
                     }
