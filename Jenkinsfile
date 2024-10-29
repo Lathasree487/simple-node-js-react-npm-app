@@ -105,7 +105,7 @@ pipeline {
             stage('Publish to DockerHub') {
             steps {
                  script {
-                    docker.withRegistry('',docker-cred) {
+                    docker.withRegistry('', docker-cred) {
                         docker.image("${IMAGE_NAME}:${env.BUILD_ID}").push()
                         // docker.image("${DOCKER_IMAGE}:${env.BUILD_ID}").push('latest')
                     }
